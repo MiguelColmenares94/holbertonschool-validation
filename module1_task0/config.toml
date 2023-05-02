@@ -3,4 +3,4 @@ languageCode = "en-us"
 title = "Awesome Inc."
 theme = "ananke"
 [build]
-publishDir = "dist"
+publishDir = "module1_task0/dist"
