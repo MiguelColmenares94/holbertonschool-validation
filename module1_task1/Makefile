@@ -10,5 +10,5 @@ clean:
 	rm -rf dist/*
 
 post:
-	echo "---\ntitle: \"\${POST_TITLE}\"\ndate: `date +%Y-%m-%dT%H:%M:%S`\ndraft: true\n---\n" > content/posts/\${POST_NAME}.md
+	echo -e "---\ntitle: "\${POST_TITLE}\"\ndate: `date +%Y-%m-%dT%H:%M:%S`\ndraft: true\n---\n" > content/posts/\${POST_NAME}.md
 
