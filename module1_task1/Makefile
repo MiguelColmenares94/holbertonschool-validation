@@ -1,4 +1,4 @@
-POST_TITLE ?= "Default Title"
+POST_TITLE ?= Default Title
 POST_NAME ?= default-name
 
 .PHONY: build clean post
