@@ -1,4 +1,4 @@
-POST_TITLE ?= Default Title
+POST_TITLE ?= default-title
 POST_NAME ?= default-name
 
 .PHONY: build clean post
@@ -10,5 +10,5 @@ clean:
 	rm -rf dist/*
 
 post:
-	echo -e '---\ntitle: "\${POST_TITLE}"\ndate: `date +%Y-%m-%dT%H:%M:%S`\ndraft: true\n---\n' > content/posts/\${POST_NAME}.md
-
+	hugo new posts/$(POST_NAME).md
+	sed -i 's/^title: .*/title: "'"${POST_TITLE}"'"/' content/posts/"${POST_NAME}".md
