@@ -4,6 +4,9 @@
 apt-get update && apt-get install -y hugo make &> /dev/null
 apt-get update && apt-get install -y wget git &> /dev/null
 
+# Remove any older version of hugo
+apt-get remove -y hugo
+
 # Download Go version 1.20.4 && GoHugo version 0.84.0 binary files
 wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz
 wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
