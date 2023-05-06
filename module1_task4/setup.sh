@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update package list and install required packages
-apt-get update && apt-get install -y wget make git
+apt-get update && apt-get install -y wget make git &> /dev/null
 
 # Download Go version 1.20.4 && GoHugo version 0.84.0 binary files
 wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz
