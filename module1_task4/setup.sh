@@ -24,15 +24,15 @@ tar -xzf hugo_extended_0.84.0_Linux-64bit.tar.gz
 mv hugo /usr/local/bin
 
 # Clone git repo & move inside repo
-if [[ -d holbertonschool-validation ]]; then
-	cd holbertonschool-validation/module1_task3
-else
-	git clone https://github.com/MiguelColmenares94/holbertonschool-validation
-	cd holbertonschool-validation/module1_task3
-fi
+#if [[ ! -d holbertonschool-validation ]]; then
+#	git clone https://github.com/MiguelColmenares94/holbertonschool-validation
+#fi
 
 # Execute the make build command and capture the output and error
 output=$(make build 2>&1)
+
+# clean all downloaded files & directories
+rm -rf go1.20.4.linux-amd64.tar.gz hugo_extended_0.84.0_Linux-64bit.tar.gz
 
 # Print the output and error
 echo "$output"

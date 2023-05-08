@@ -7,7 +7,7 @@ build:  ##Build your website
 	hugo
 
 clean:  ##Delete all the content inside dist directory
-	rm -rf dist/*
+	rm -rf dist
 
 post:  ##Create a new post with global variables where file name is POST_NAME and post title is POST_TITLE
 	hugo new posts/$(POST_NAME).md
