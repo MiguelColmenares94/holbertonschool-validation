@@ -18,14 +18,18 @@ rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 
 # Extract GoHugo binary
-tar -xzf https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
+tar -xzf hugo_extended_0.84.0_Linux-64bit.tar.gz
 
 # Move GoHugo binary to PATH
 mv hugo /usr/local/bin
 
 # Clone git repo & move inside repo
-git clone https://github.com/MiguelColmenares94/holbertonschool-validation
-cd holbertonschool-validation/module1_task3
+if [[ -d holbertonschool-validation ]]; then
+	cd holbertonschool-validation/module1_task3
+else
+	git clone https://github.com/MiguelColmenares94/holbertonschool-validation
+	cd holbertonschool-validation/module1_task3
+fi
 
 # Execute the make build command and capture the output and error
 output=$(make build 2>&1)
