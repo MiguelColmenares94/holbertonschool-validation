@@ -3,7 +3,7 @@
 
 ## Prerequisites
 
-Ubuntu 18.04
+Ubuntu  18.04
 GNU Make in version 3.81+
 Git (command line) in version 2+
 Go Hugo v0.84.0
