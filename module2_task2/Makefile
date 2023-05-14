@@ -19,7 +19,7 @@ test:   ## Ensure that it behaves as expected
 	@curl http://localhost:9999
 	@curl http://localhost:9999/health
 
-unit-tests:  ## Run unit tests on web server
+unit-tests:   ## Run unit tests on web server
 	@go test -v -short -coverprofile=coverage-units.out
 
 help:   ## Show this help usage
