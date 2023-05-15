@@ -13,6 +13,11 @@ func Test_server(t *testing.T) {
 		t.Skip("Flag `-short` provided: skipping Integration Tests.")
 	}
 
+	indexHtmlContent, err := getIndexHtmlContent()
+    if err != nil {
+        t.Fatalf("Error reading index.html content: %v", err)
+    }
+
 	tests := []struct {
 		name         string
 		URI          string
@@ -23,13 +28,13 @@ func Test_server(t *testing.T) {
 			name:         "Home page",
 			URI:          "",
 			responseCode: 200,
-			body:         "",
+			body:         indexHtmlContent,
 		},
 		{
 			name:         "Home page slash",
 			URI:          "/",
 			responseCode: 200,
-			body:         "",
+			body:         indexHtmlContent,
 		},
 		{
 			name:         "Hello page",

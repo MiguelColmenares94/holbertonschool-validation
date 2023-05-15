@@ -39,6 +39,16 @@ func setupRouter() *mux.Router {
   return r
 }
 
+func getIndexHtmlContent() (string, error) {
+    indexHtmlPath := "./dist/index.html"
+    content, err := ioutil.ReadFile(indexHtmlPath)
+    if err != nil {
+        return "", err
+    }
+    return string(content), nil
+}
+
+
 func HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
   // Print a line in the logs
   fmt.Println("HIT: healthcheck")
