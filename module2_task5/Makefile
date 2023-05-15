@@ -18,7 +18,7 @@ stop:   ## Stop the application
 hugo-build: ## build website
 	@hugo
 
-go-build:  lint ## Compile the source code of the application to a binary
+go-build:   ## Compile the source code of the application to a binary
 	@go build
 
 clean:  stop ## Delete all the content inside dist directory
