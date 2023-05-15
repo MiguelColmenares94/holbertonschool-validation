@@ -34,7 +34,7 @@ unit-tests:   ## Run unit tests on web server
 	@go test -v -short -coverprofile=coverage-units.out
 
 integration-tests:   ## Run integration tests on web server
-	@go test -v -coverprofile=coverage-integrations.outA
+	@go test -v -coverprofile=coverage-integrations.out
 
 check:  ## check content and links  of URLs
 	@markdownlint content/posts/*.md
