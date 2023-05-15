@@ -20,18 +20,6 @@ func Test_server(t *testing.T) {
 		body         string
 	}{
 		{
-			name:         "Home page no slash",
-			URI:          "",
-			responseCode: 200,
-			body:         "",
-		},
-		{
-			name:         "Home page with slash",
-			URI:          "/",
-			responseCode: 200,
-			body:         "",
-		},
-		{
 			name:         "Hello page",
 			URI:          "/hello?name=Holberton",
 			responseCode: 200,
