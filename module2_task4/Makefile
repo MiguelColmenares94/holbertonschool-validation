@@ -9,7 +9,7 @@ check:  ## check content and links  of URLs
 	@find content/**/*.md -exec markdown-link-check {} \;
 
 validate: ## validate links in dist folder
-	@python3 /opt/W3C-Validator/w3c_validator.py dist/index.html 2>&1 || true
+	@python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html 2>&1 || true
 
 build:  check ##Build your website
 	@hugo
