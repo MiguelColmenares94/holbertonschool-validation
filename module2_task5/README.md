@@ -25,6 +25,12 @@ The website's lifecycle consists of the following steps:
 8. Run `make stop` should stop the service started by make run
 9. Run `make lint` should execute all of the lint steps
 10. Run `make test` should execute all of the testing targets (unit-tests, integration-tests and validate)
+11. Run `make hugo-build` build website
+12. Run `make go-build` Compile the source code of the application to a binary
+13. Run `make unit-tests` Run unit tests on web server
+14. Run `make integration-tests` Run integration tests on web server
+15. Run `make check` check content and links  of URLs
+16. Run `make validate` validate links in dist folder
 6. Make any changes to the content or theme, and the local server will automatically update to reflect the changes.
 
 To get a list of available Makefile targets and their descriptions, run `make help`.
