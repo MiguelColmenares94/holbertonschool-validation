@@ -1,0 +1,35 @@
+---
+name: module3_task1
+
+on:
+  push:
+  schedule:
+    - cron: '0 0 * * *' # Run at 00:00 UTC every day
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run setup.sh
+        run: ./setup.sh
+
+      - name: Run make build
+        run: |
+          cd module3_task1
+          make build
+
+      - name: Run make run
+        run: make run
+
+      - name: Run make test
+        run: make test
+
+      - name: Run make stop
+        run: make stop
+
+      - name: Run make clear
+        run: make clear
