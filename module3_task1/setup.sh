@@ -15,8 +15,9 @@ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/insta
 # Extract and move go binary to /usr/local
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
 
-# include /usr/local/go/bin in PATH
+# include /usr/local/go/bin && (go env GOPATH)/bin in PATH
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Extract GoHugo binary
 tar -xzf hugo_extended_0.84.0_Linux-64bit.tar.gz
