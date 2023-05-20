@@ -16,30 +16,30 @@ jobs:
 
       - name: Run setup.sh
         run: |
-        cd module3_task1
-        ./setup.sh
+         cd module3_task1
+         ./setup.sh
 
       - name: Run make build
         run: |
-        cd module3_task1
-        make build
+         cd module3_task1
+         make build
 
       - name: Run make run
         run: |
-        cd module3_task1
-        make run
+         cd module3_task1
+         make run
 
       - name: Run make test
         run: |
-        cd module3_task1
-        make test
+         cd module3_task1
+         make test
 
       - name: Run make stop
         run: |
-        cd module3_task1
-        make stop
+         cd module3_task1
+         make stop
 
       - name: Run make clear
         run: |
-        cd module3_task1
-        make clear
+         cd module3_task1
+         make clear
