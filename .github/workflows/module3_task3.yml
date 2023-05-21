@@ -80,7 +80,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: awesome-website
-          path: awesome-website.zip
+          path: artifacts/
         if: startsWith(github.ref, 'refs/tags/')
 
       - name: Install zip
@@ -89,18 +89,16 @@ jobs:
 
       - name: Create zip archive
         run: |
-          mkdir temp
-          cp awesome-website.zip temp/
-          cp module3_task3/DEPLOY.md temp/
-          zip -r awesome-website.zip temp/
+          mkdir release-artifacts
+          cp artifacts/awesome-website.zip release-artifacts/
+          cp module3_task3/DEPLOY.md release-artifacts/
+          zip -r awesome-website.zip release-artifacts/
         if: startsWith(github.ref, 'refs/tags/')
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
-          files: |
-            module3_task3/DEPLOY.md
-            module3_task3/awesome-website.zip
+          files: awesome-website.zip
           body_path: module3_task3/DEPLOY.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
