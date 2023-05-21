@@ -79,7 +79,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: awesome-website
-        path: public/
+          path: awesome-website.zip
 
       - name: Install zip
         run: sudo apt-get install zip
