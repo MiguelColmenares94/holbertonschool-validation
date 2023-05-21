@@ -1,5 +1,5 @@
 ---
-name: module3_task2
+name: module3_task3
 
 on:
   push:
@@ -28,32 +28,32 @@ jobs:
 
       - name: Run setup.sh
         run: ./setup.sh
-        working-directory: module3_task2
+        working-directory: module3_task3
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
           version: v1.42.1
-          working-directory: module3_task2
+          working-directory: module3_task3
 
       - name: Run make build
         run: make build
-        working-directory: module3_task2
+        working-directory: module3_task3
       - name: Run make run
         run: make run
-        working-directory: module3_task2
+        working-directory: module3_task3
 
       - name: Run make test
         run: make test
-        working-directory: module3_task2
+        working-directory: module3_task3
 
       - name: Run make stop
         run: make stop
-        working-directory: module3_task2
+        working-directory: module3_task3
 
       - name: Package application
         run: make package
-        working-directory: module3_task2
+        working-directory: module3_task3
 
       - name: Upload package as artifact
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
@@ -64,7 +64,7 @@ jobs:
 
       - name: Run make clear
         run: make clean
-        working-directory: module3_task2
+        working-directory: module3_task3
 
   release:
     runs-on: ubuntu-22.04
