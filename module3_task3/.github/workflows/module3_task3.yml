@@ -1,0 +1,96 @@
+---
+name: module3_task2
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: '0 0 * * *' # Run at 00:00 UTC every day
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.20'
+
+      - name: Run setup.sh
+        run: ./setup.sh
+        working-directory: module3_task2
+
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.42.1
+          working-directory: module3_task2
+
+      - name: Run make build
+        run: make build
+        working-directory: module3_task2
+      - name: Run make run
+        run: make run
+        working-directory: module3_task2
+
+      - name: Run make test
+        run: make test
+        working-directory: module3_task2
+
+      - name: Run make stop
+        run: make stop
+        working-directory: module3_task2
+
+      - name: Package application
+        run: make package
+        working-directory: module3_task2
+
+      - name: Upload package as artifact
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        uses: actions/upload-artifact@v2
+        with:
+          name: awesome-website
+          path: awesome-website.zip
+
+      - name: Run make clear
+        run: make clean
+        working-directory: module3_task2
+
+  release:
+    runs-on: ubuntu-22.04
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: awesome-website
+        path: public/
+
+      - name: Install zip
+        run: sudo apt-get install zip
+
+      - name: Create zip archive
+        run: zip -r awesome-website.zip public/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: awesome-website.zip
+          body_path: DEPLOY.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
