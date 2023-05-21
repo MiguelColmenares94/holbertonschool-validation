@@ -39,8 +39,8 @@ integration-tests: ## Run integration tests
 
 lint:	## Lint go lang code
 	golangci-lint run
-	markdownlint README.md
-	mardkdownlint DEPLOY.md
+	markdownlint /holbertonschool-validation/module3_task2/README.md
+	markdownlint /holbertonschool-validation/module3_task2/DEPLOY.md
 
 check:	## Lint markdonw source, check dead links
 	markdownlint content/**/*.md
