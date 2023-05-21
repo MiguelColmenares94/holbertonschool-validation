@@ -94,8 +94,9 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: awesome-website.zip
-          body_path: DEPLOY.md
+          files: |
+          module3_task3/DEPLOY.md
+          module3_task3/awesome-website.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: startsWith(github.ref, 'refs/tags/')
