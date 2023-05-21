@@ -46,3 +46,8 @@ curl http://localhost:8080/healthcheck
 ``
 
 If the application is running, it will return a `200 OK` status.
+
+## Release
+
+The release have tag and includes the `awesome-website.zip` file, which contains the latest version of the website.
+
