@@ -74,18 +74,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        if: startsWith(github.ref, 'refs/tags/')
 
       - name: Download artifacts
         uses: actions/download-artifact@v2
         with:
           name: awesome-website
           path: awesome-website.zip
+        if: startsWith(github.ref, 'refs/tags/')
 
       - name: Install zip
         run: sudo apt-get install zip
+        if: startsWith(github.ref, 'refs/tags/')
 
       - name: Create zip archive
         run: zip -r awesome-website.zip public/
+        if: startsWith(github.ref, 'refs/tags/')
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -94,3 +98,4 @@ jobs:
           body_path: DEPLOY.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: startsWith(github.ref, 'refs/tags/')
