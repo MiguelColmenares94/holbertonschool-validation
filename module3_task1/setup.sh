@@ -12,6 +12,11 @@ wget https://go.dev/dl/go1.20.4.linux-amd64.tar.gz
 wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 
+# Install with npm markdown-lint && markdown-lint-check
+npm install -g markdownlint-cli@0.26.0
+npm install --save-dev markdown-link-check
+npm install -g markdown-link-check@3.8.6
+
 # Extract and move go binary to /usr/local
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.4.linux-amd64.tar.gz
 
