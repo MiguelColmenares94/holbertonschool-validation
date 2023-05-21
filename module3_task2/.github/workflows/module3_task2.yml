@@ -19,17 +19,16 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: '1.20'
 
       - name: Run setup.sh
-        run: |
-         cd module3_task2
-         ./setup.sh
+        run: ./setup.sh
+        working-directory: module3_task2
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v3
@@ -38,38 +37,31 @@ jobs:
           working-directory: module3_task2
 
       - name: Run make build
-        run: |
-         cd module3_task2
-         make build
-
+        run: make build
+        working-directory: module3_task2
       - name: Run make run
-        run: |
-         cd module3_task2
-         make run
+        run: make run
+        working-directory: module3_task2
 
       - name: Run make test
-        run: |
-         cd module3_task2
-         make test
+        run: make test
+        working-directory: module3_task2
 
       - name: Run make stop
-        run: |
-         cd module3_task2
-         make stop
+        run: make stop
+        working-directory: module3_task2
 
       - name: Package application
-        run: |
-         cd module3_task2
-         make package
+        run: make package
+        working-directory: module3_task2
 
       - name: Upload package as artifact
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: awesome-website
           path: awesome-website.zip
 
       - name: Run make clear
-        run: |
-         cd module3_task2
-         make clean
+        run: make clean
+        working-directory: module3_task2
