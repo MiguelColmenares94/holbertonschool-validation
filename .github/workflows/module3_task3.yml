@@ -88,7 +88,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
 
       - name: Create zip archive
-        run: zip -r awesome-website.zip public/
+        run: zip -r awesome-website.zip awesome-website.zip DEPLOY.md
         if: startsWith(github.ref, 'refs/tags/')
 
       - name: Create GitHub Release
@@ -97,6 +97,7 @@ jobs:
           files: |
             module3_task3/DEPLOY.md
             module3_task3/awesome-website.zip
+          body_path: module3_task3/DEPLOY.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: startsWith(github.ref, 'refs/tags/')
