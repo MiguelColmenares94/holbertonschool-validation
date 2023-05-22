@@ -1,20 +1,18 @@
-name: release-drafter
+name: Release Drafter
 on:
   push:
     branches:
       - main
-      - master
-        
-permissions:
-  contents: read
-
+    tags:
+      - '*'
+  release:
+    types:
+      - created
 jobs:
   update_release_draft:
-    permissions:
-      contents: write
     runs-on: ubuntu-22.04
     steps:
       - name: Draft a new release
         uses: release-drafter/release-drafter@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.DEVOPS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
