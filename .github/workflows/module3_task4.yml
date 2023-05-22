@@ -12,6 +12,9 @@ on:
       branches:
         - main
         - master
+    schedule:
+    - cron: '0 0 * * *' # Run at 00:00 UTC every day
+
 jobs:
   build:
     runs-on: ubuntu-22.04
