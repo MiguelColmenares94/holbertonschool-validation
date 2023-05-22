@@ -56,7 +56,7 @@ jobs:
         run: make package
         working-directory: module3_task3
 
-      - name: Release
+      - name: 1.0.0
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
@@ -64,10 +64,10 @@ jobs:
           files: |
             module3_task3/DEPLOY.md
             module3_task3/awesome-website.zip
-          body_path: module3_task3/DEPLOY.mdA
+          body_path: module3_task3/DEPLOY.md
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
         env:
-          GITHUB_REPOSITORY: my_gh_org/my_gh_repo
+          GITHUB_REPOSITORY: MiguelColmenares94/holbertonschool-validation
 
       - name: archive build
         if: ${{ success()}}
