@@ -4,11 +4,14 @@ on:
     branches:
       - main
       - master
-    pull_request:
-      types: [opened, reopened, synchronize]
+        
+permissions:
+  contents: read
 
 jobs:
   update_release_draft:
+    permissions:
+      contents: write
     runs-on: ubuntu-22.04
     steps:
       - name: Draft a new release

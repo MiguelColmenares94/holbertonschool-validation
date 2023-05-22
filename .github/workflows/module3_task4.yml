@@ -9,8 +9,9 @@ on:
     tags:
       - "v*.*.*"
     pull_request:
-      types: [opened, reopened, edited, ready_for_review]
-
+      branches:
+        - main
+        - master
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -63,7 +64,7 @@ jobs:
             module3_task4/DEPLOY.md
             module3_task4/awesome-website.zip
           body_path: module3_task4/DEPLOY.md
-          token: ${{ secrets.DEVOPS }}
+          token: ${{ secrets.devops }}
         env:
           GITHUB_REPOSITORY: MiguelColmenares94/holbertonschool-validation
 
