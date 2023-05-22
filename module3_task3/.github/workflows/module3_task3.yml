@@ -56,11 +56,22 @@ jobs:
         run: make package
         working-directory: module3_task3
 
-      - name: 1.0.0
+      - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
+          tag_name: 1.0.0
           files: |
             module3_task3/DEPLOY.md
             module3_task3/awesome-website.zip
-          body_path: module3_task3/DEPLOY.md
+          body_path: module3_task3/DEPLOY.mdA
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        env:
+          GITHUB_REPOSITORY: my_gh_org/my_gh_repo
+
+      - name: archive build
+        if: ${{ success()}}
+        uses: actions/upload-artifact@v3
+        with:
+          name: upload-package
+          path: module3_task3/awesome-website.zip
