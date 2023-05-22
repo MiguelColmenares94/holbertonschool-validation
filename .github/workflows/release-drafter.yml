@@ -4,8 +4,10 @@ on:
     branches:
       - main
       - master
-    tags:
-      - "v*.*.*"
+    pull_request:
+      branches:
+        -main
+        -master
   release:
     types:
       - created
