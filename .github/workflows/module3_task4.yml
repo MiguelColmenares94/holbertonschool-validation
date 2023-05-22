@@ -8,8 +8,8 @@ on:
       - master
     tags:
       - "v*.*.*"
-  schedule:
-    - cron: '0 0 * * *' # Run at 00:00 UTC every day
+    pull_request:
+      types: [opened, reopened, edited, ready_for_review]
 
 jobs:
   build:
@@ -55,7 +55,7 @@ jobs:
         run: make package
         working-directory: module3_task4
 
-      - name: 1.0.1
+      - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:

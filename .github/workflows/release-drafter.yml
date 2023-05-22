@@ -6,9 +6,7 @@ on:
       - master
     pull_request:
       types: [opened, reopened, synchronize]
-  release:
-    types:
-      - created
+
 jobs:
   update_release_draft:
     runs-on: ubuntu-22.04
