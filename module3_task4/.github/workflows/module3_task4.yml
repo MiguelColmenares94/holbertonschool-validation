@@ -1,5 +1,4 @@
----
-name: module3_task3
+name: module3_task4
 
 on:
   push:
@@ -8,12 +7,10 @@ on:
       - master
     tags:
       - "v*.*.*"
-      
-  pull_request:
-    branches:
-      - main
-      - master
-  schedule:
+    pull_request:
+      types:
+        - [opened, reopened, edited, ready_for_review]
+    schedule:
     - cron: '0 0 * * *' # Run at 00:00 UTC every day
 
 jobs:
@@ -31,43 +28,43 @@ jobs:
 
       - name: Run setup.sh
         run: ./setup.sh
-        working-directory: module3_task3
+        working-directory: module3_task4
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
           version: v1.42.1
-          working-directory: module3_task3
+          working-directory: module3_task4
 
       - name: Run make build
         run: make build
-        working-directory: module3_task3
+        working-directory: module3_task4
+
       - name: Run make run
         run: make run
-        working-directory: module3_task3
+        working-directory: module3_task4
 
-      - name: Run make test
+      - name: test
         run: make test
-        working-directory: module3_task3
+        working-directory: module3_task4
 
       - name: Run make stop
         run: make stop
-        working-directory: module3_task3
+        working-directory: module3_task4
 
       - name: Package application
         if: steps.test.outputs.exit_code == 0
         run: make package
-        working-directory: module3_task3
+        working-directory: module3_task4
 
-      - name: 1.0.0
+      - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          tag_name: 1.0.0
           files: |
-            module3_task3/DEPLOY.md
-            module3_task3/awesome-website.zip
-          body_path: module3_task3/DEPLOY.md
+            module3_task4/DEPLOY.md
+            module3_task4/awesome-website.zip
+          body_path: module3_task4/DEPLOY.md
           token: ${{ secrets.DEVOPS }}
         env:
           GITHUB_REPOSITORY: MiguelColmenares94/holbertonschool-validation
@@ -77,4 +74,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: upload-package
-          path: module3_task3/awesome-website.zip
+          path: module3_task4/awesome-website.zip
