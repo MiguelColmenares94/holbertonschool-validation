@@ -38,3 +38,4 @@ line Holberton’s W3C Validator.
 build and the directory dist
 
 - help: Display help message.
+test 4
