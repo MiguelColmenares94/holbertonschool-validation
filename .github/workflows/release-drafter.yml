@@ -1,4 +1,4 @@
-name: release Drafter
+name: release-drafter
 on:
   push:
     branches:
