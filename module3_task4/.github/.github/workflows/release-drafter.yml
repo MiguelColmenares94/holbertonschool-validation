@@ -3,8 +3,9 @@ on:
   push:
     branches:
       - main
+      - master
     tags:
-      - '*'
+      - "v*.*.*"
   release:
     types:
       - created
@@ -15,4 +16,4 @@ jobs:
       - name: Draft a new release
         uses: release-drafter/release-drafter@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEVOPS }}

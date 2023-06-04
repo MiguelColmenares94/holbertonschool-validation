@@ -6,6 +6,9 @@ on:
     branches:
       - main
       - master
+    tags:
+      - "v*.*.*"
+      
   pull_request:
     branches:
       - main
@@ -65,7 +68,7 @@ jobs:
             module3_task3/DEPLOY.md
             module3_task3/awesome-website.zip
           body_path: module3_task3/DEPLOY.md
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          token: ${{ secrets.DEVOPS }}
         env:
           GITHUB_REPOSITORY: MiguelColmenares94/holbertonschool-validation
 
