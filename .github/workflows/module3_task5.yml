@@ -84,6 +84,7 @@ jobs:
           publish-dir: './dist'
           production-branch: master
           enable-pull-request-comment: true
+          deploy-message: "Deploy from GitHub Actions"
           github-token: ${{ secrets.DEVOPS }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
