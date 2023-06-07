@@ -81,7 +81,7 @@ jobs:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './dist'
+          publish-dir: './module3_task5/dist'
           production-branch: master
           enable-pull-request-comment: true
           deploy-message: "Deploy from GitHub Actions"
